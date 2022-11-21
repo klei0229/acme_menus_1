@@ -5,7 +5,7 @@ import { logout, setMenu } from "../store";
 
 import translate from "translate";
 
-import { Container, Button, Grid } from "@mui/material";
+import { Container, Button, Grid, Paper, Typography } from "@mui/material";
 import ImgMediaCard from "./MenuCard/ImgMediaCard";
 
 // const { text } = await translate('Привет, мир! Как дела?', { to: 'en' });
@@ -14,7 +14,7 @@ import ImgMediaCard from "./MenuCard/ImgMediaCard";
 
 import Resturants from "./Restaurants";
 
-const Menu = ({state}) => {
+const Menu = ({ state }) => {
   const { menu } = useSelector((state) => state);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -28,52 +28,77 @@ const Menu = ({state}) => {
   //   console.log(text);
   // }
 
-  const [_menu, setMenu] = React.useState([]);
-  
+  const [_menu, setMenu] = React.useState({});
+
   useEffect(() => {
     // dispatch(fetchMenu(id));
     // test();
     console.log(state);
+    setMenu(state.menu);
+
   }, [state]);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(menu);
 
     // if(menu.length== 0){
     //   dispatch(setMenu());
     // }
-    setMenu(menu)
-  },[menu])
+    setMenu(menu);
+  }, [menu]);
 
   return (
     <div>
-      <Container maxWidth="xl">
-        <h1>Menu</h1>
-        <Grid container spacing={3}>
-          {_menu.map((dish) => {
+      <Paper elevation='5'
+        sx={{
+          minWidth: "1800px",
+          // backgroundColor:'red'
+        }}
+      >
+        <Container
+          sx={
+            {
+              // backgroundColor:'green'
+            }
+          }
+          align="center"
+          maxWidth="xl"
+        >
+          {/* <h1>Menu</h1> */}
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+
+          <Typography variant='h1'>
+            {state.restaurantName}
+          </Typography>
+          <hr></hr>
+          <br></br>
+          {Object.keys(_menu).map((key, index) => {
             return (
-              <Grid item xl={4}>
-                {/* {state.fontSize} */}
-                <ImgMediaCard state={state} card={dish}/>
-                
-              </Grid>
+              <div>
+          
+                <h1>{key}</h1>
+                <Grid container maxWidth="lg" spacing={3}>
+                  {_menu[key].map((dish) => {
+                    return (
+                      
+                        <Grid item lg={4}>
+                          <ImgMediaCard state={state} card={dish} />
+                        </Grid>
+                    );
+                  })}
+                </Grid>
+                <br></br>
+              </div>
             );
           })}
-        </Grid>
-        {/* {menu.length} */}
-
-        {menu.map((dish) => {
-          return (
-            <div>
-              <h3>{dish.name}</h3>
-              <h3>{dish.secondaryname}</h3>
-              <h3>{dish.description}</h3>
-              <h3>{dish.price}</h3>
-              <hr></hr>
-            </div>
-          );
-        })}
-      </Container>
+        </Container>
+        <br></br>
+        <br></br>
+      </Paper>
     </div>
   );
 };

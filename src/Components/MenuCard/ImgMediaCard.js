@@ -119,6 +119,9 @@ export default function ImgMediaCard(props) {
         <Typography variant="body2" color="text.secondary">
           $ {card.price}
         </Typography>
+        <Button variant='contained' size="small" onClick={handleClickOpen}>
+          Add To Order
+        </Button>
         <Dialog
           open={open}
           // TransitionComponent={Transition}

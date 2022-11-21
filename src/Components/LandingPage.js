@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchRestaurants,setMenu } from "../store";
+import { fetchRestaurants, setMenu } from "../store";
 // import { logout } from '../store';
 
 import Papa from "papaparse";
@@ -59,32 +59,41 @@ const LandingPage = () => {
   };
 
   const getJSON = (data) => {
-    const arr = [];
+    data.data.pop();
+    const arr = {};
     console.log(data);
 
     data.data.map((item) => {
       console.log(item);
+
       const obj = {
         name: item[0],
         image: item[1],
         description: item[2],
         price: item[3],
-        category: item[4],
       };
-      arr.push(obj);
+
+      if (!arr.hasOwnProperty(item[4])) {
+        // const categoryArr = [];
+        arr[item[4]] = [];
+      }
+
+      arr[item[4]].push(obj);
     });
-    arr.pop();
+    // arr.pop();
     console.log(arr);
     return arr;
   };
 
   const handleSubmit = () => {
     // console.log(data);
-    const JSONData = getJSON(data);
-    dispatch(setMenu(JSONData));
+    // const JSONData = getJSON(data);
+    // dispatch(setMenu(JSONData));
     navigate("/creatingMenu");
     // return JSONData;
   };
+
+
 
   return (
     <div>
@@ -96,7 +105,7 @@ const LandingPage = () => {
       <hr></hr>
       {/* <CreateAMenu></CreateAMenu> */}
       <Container maxWidth="lg"></Container>
-      <Button onClick={handleClickOpen}>+</Button>
+      <Button onClick={handleSubmit}>Create New Menu</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Create A New Menu</DialogTitle>
         <DialogContent>

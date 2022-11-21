@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const menu = (state = [], action) => {
+const menu = (state = {}, action) => {
   if (action.type === "SET_MENU") {
     console.log('here');
     console.log(action.menu);

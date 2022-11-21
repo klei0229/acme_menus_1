@@ -5,20 +5,20 @@ import { fetchRestaurants } from "../store";
 
 //mui
 import Menu from "./Menu";
-import { Container, Button, Grid } from "@mui/material";
+import { Container, Button, Grid, Typography } from "@mui/material";
 
 import EditPanel from "./EditPanel";
 
 const CreatingMenu = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {}, []);
-
   const [state, setState] = React.useState({
-    fontSize: 12,
-    headingFontSize: 15,
-    headingFontFamily: "arial",
+    // fontSize: 12,
+    // headingFontSize: 15,
+    // headingFontFamily: "arial",
 
+    restaurantName: "Restaurant Name",
+    menu: {},
     heading: {
       fontSize: 12,
       fontFamily: "verdana",
@@ -42,6 +42,19 @@ const CreatingMenu = () => {
     },
   });
 
+  const fetchData = (data) => {
+    console.log("fetch data");
+    console.log(data);
+    let newState = { ...state };
+    newState.menu = data;
+    setState(newState);
+    console.log(state);
+  };
+
+  const submitMenu = () => {
+    console.log("submitted menu");
+  };
+
   const adjustState = (ev) => {
     console.log(ev.target.value);
     console.log(ev.target.name);
@@ -62,28 +75,43 @@ const CreatingMenu = () => {
       let newState = { ...state };
       newState.heading.color.r = ev.target.value;
       setState(newState);
-    }else if (name === "headingFontColorG") {
+    } else if (name === "headingFontColorG") {
+      let newState = { ...state };
+      newState.heading.color.g = ev.target.value;
+      setState(newState);
+    } else if (name === "headingFontColorB") {
+      let newState = { ...state };
+      newState.heading.color.b = ev.target.value;
+      setState(newState);
+    } else if (name ==="resName"){
+        console.log('here')
         let newState = { ...state };
-        newState.heading.color.g = ev.target.value;
+        newState.restaurantName = ev.target.value;
         setState(newState);
-      }else if (name === "headingFontColorB") {
-        let newState = { ...state };
-        newState.heading.color.b = ev.target.value;
-        setState(newState);
-      }
+    }
   };
 
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
   return (
     <div>
       <h1>Edit Your Menu</h1>
       <Grid container spacing={2}>
         <Grid item lg={2}>
           <Container maxWidth="lg">
-            <EditPanel onChange={adjustState} state={state} />
+          <Typography variant='h4'>Editor</Typography>
+            <EditPanel
+              onSubmit={submitMenu}
+              onChange={adjustState}
+              fetchData={fetchData}
+              state={state}
+            />
           </Container>
         </Grid>
         <Grid item>
-          Preview Tab
+          {/* Preview Tab */}
+          <Typography variant='h4'>Preview</Typography>
           <Container maxWidth="lg">
             <Menu state={state}></Menu>
           </Container>
