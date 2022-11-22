@@ -21,7 +21,7 @@ const CreatingMenu = () => {
     restaurantName: "Restaurant Name",
     menu: {},
     item_heading: {
-      fontSize: 12,
+      fontSize: 18,
       fontFamily: "verdana",
       color: {
         r: 0,
@@ -40,6 +40,70 @@ const CreatingMenu = () => {
         ml: 0,
         mb: 0,
       },
+    },
+    restaurant_name: {
+      fontSize: 100,
+      fontFamily: "verdana",
+      color: {
+        r: 0,
+        g: 0,
+        b: 0,
+      },
+      padding: {
+        pt: 0,
+        pr: 0,
+        pl: 0,
+        pb: 0,
+      },
+      margin: {
+        mt: 0,
+        mr: 0,
+        ml: 0,
+        mb: 0,
+      },
+    },
+    categories: {
+      fontSize: 36,
+      fontFamily: "verdana",
+      color: {
+        r: 0,
+        g: 0,
+        b: 0,
+      },
+      padding: {
+        pt: 0,
+        pr: 0,
+        pl: 0,
+        pb: 0,
+      },
+      margin: {
+        mt: 0,
+        mr: 0,
+        ml: 0,
+        mb: 0,
+      },
+    },
+    descriptions: {
+      fontSize: 14,
+      fontFamily: "verdana",
+      color: {
+        r: 0,
+        g: 0,
+        b: 0,
+      },
+      padding: {
+        pt: 0,
+        pr: 0,
+        pl: 0,
+        pb: 0,
+      },
+      margin: {
+        mt: 0,
+        mr: 0,
+        ml: 0,
+        mb: 0,
+      },
+      minHeight: 20
     },
   });
 
@@ -64,42 +128,70 @@ const CreatingMenu = () => {
 
     let name = ev.target.name;
 
+    let newState = {...state};
+
     if (name === "item_headingFontSize") {
-      console.log("hereeeee");
-      let newState = { ...state };
       console.log(newState);
       newState.item_heading.fontSize = ev.target.value;
-      setState(newState);
     } else if (name === "item_headingFontFamily") {
-      let newState = { ...state };
       newState.item_heading.fontFamily = ev.target.value;
-      setState(newState);
     } else if (name === "item_headingFontColorR") {
-      let newState = { ...state };
       newState.item_heading.color.r = ev.target.value;
-      setState(newState);
     } else if (name === "item_headingFontColorG") {
-      let newState = { ...state };
       newState.item_heading.color.g = ev.target.value;
-      setState(newState);
     } else if (name === "item_headingFontColorB") {
-      let newState = { ...state };
       newState.item_heading.color.b = ev.target.value;
-      setState(newState);
     } else if (name === "resName") {
-      console.log("here");
-      let newState = { ...state };
       newState.restaurantName = ev.target.value;
-      setState(newState);
     }
-  };
+    //_____________________
+    if (name === "restaurant_nameFontSize") {
+      newState.restaurant_name.fontSize = ev.target.value;
+    } else if (name === "restaurant_nameFontFamily") {
+      newState.restaurant_name.fontFamily = ev.target.value;
+    } else if (name === "restaurant_nameFontColorR") {
+      newState.restaurant_name.color.r = ev.target.value;
+    } else if (name === "restaurant_nameFontColorG") {
+      newState.restaurant_name.color.g = ev.target.value;
+    } else if (name === "restaurant_nameFontColorB") {
+      newState.restaurant_name.color.b = ev.target.value;
+    } 
+
+    if (name === "categoriesFontSize") {
+      newState.categories.fontSize = ev.target.value;
+    } else if (name === "categoriesFontFamily") {
+      newState.categories.fontFamily = ev.target.value;
+    } else if (name === "categoriesFontColorR") {
+      newState.categories.color.r = ev.target.value;
+    } else if (name === "categoriesFontColorG") {
+      newState.categories.color.g = ev.target.value;
+    } else if (name === "categoriesFontColorB") {
+      newState.categories.color.b = ev.target.value;
+    } 
+
+    if (name === "descriptionsFontSize") {
+      newState.descriptions.fontSize = ev.target.value;
+    } else if (name === "descriptionsFontFamily") {
+      newState.descriptions.fontFamily = ev.target.value;
+    } else if (name === "descriptionsFontColorR") {
+      newState.descriptions.color.r = ev.target.value;
+    } else if (name === "descriptionsFontColorG") {
+      newState.descriptions.color.g = ev.target.value;
+    } else if (name === "descriptionsFontColorB") {
+      newState.descriptions.color.b = ev.target.value;
+    } else if (name === "descriptionsMinHeight") {
+      console.log(1);
+    newState.descriptions.minHeight = ev.target.value;
+  } 
+    setState(newState);
+    }
 
   useEffect(() => {
     console.log(state);
   }, [state]);
   return (
     <div>
-      <h1>Edit Your Menu</h1>
+      {/* <h1>Edit Your Menu</h1> */}
       <Grid container spacing={3}>
         <Grid item
           // backgroundColor="blue"
@@ -134,7 +226,7 @@ const CreatingMenu = () => {
 
           }}>
           <Container maxWidth="lg">
-          {/* <Typography variant="h4">Preview</Typography> */}
+          <Typography variant="h4">Preview</Typography>
             <Menu state={state}></Menu>
           </Container>
         </Paper>

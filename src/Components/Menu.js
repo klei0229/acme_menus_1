@@ -55,59 +55,82 @@ const Menu = ({ state }) => {
 
   return (
     <div>
-      <Container sx={{backgroundColor:'white'}} maxWidth='lg'>
-      <Paper
-        elevation="5"
+      <Container
         sx={{
-          // minWidth: "1800px",
-          // backgroundColor:'red'
-          minWidth: "100%",
-          // maxWidth: "75%vw"
+          backgroundColor: "white",
         }}
+        maxWidth="lg"
       >
-        <Container
-          sx={
-            {
-              // backgroundColor:'green'
-            }
-          }
-          align="center"
-          maxWidth="lg"
+        <Paper
+          elevation="5"
+          sx={{
+            // minWidth: "1800px",
+            // backgroundColor:'red'
+            minWidth: "100%",
+            // maxWidth: "75%vw"
+          }}
         >
-          {/* <h1>Menu</h1> */}
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
+          <Container
+            sx={
+              {
+                // backgroundColor:'green'
+              }
+            }
+            align="center"
+            maxWidth="lg"
+          >
+            {/* <h1>Menu</h1> */}
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
 
-          <Typography variant="h1">{state.restaurantName}</Typography>
-          <hr></hr>
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: state.restaurant_name.fontSize,
+                color: `rgb(${state.restaurant_name.color.r},${state.restaurant_name.color.g},${state.restaurant_name.color.b})`,
+                fontFamily: state.restaurant_name.fontFamily,
+              }}
+            >
+              {state.restaurantName}
+            </Typography>
+            <hr></hr>
+            <br></br>
+
+            {/* //navbar */}
+            
+            {console.log(_menu)}
+            {Object.keys(_menu).map((key, index) => {
+              return (
+                <div>
+                  {/* <h1>{key}</h1> */}
+                  <Typography sx={{
+                    fontSize:state.categories.fontSize,
+                    fontFamily:state.categories.fontFamily,
+                    color: `rgb(${state.categories.color.r},${state.categories.color.g},${state.categories.color.b})`,
+                  }} variant="h4" gutterBottom>
+                    {key}
+                  </Typography>
+                  <Grid container maxWidth="lg" spacing={3}>
+                    {_menu[key].map((dish) => {
+                      return (
+                        <Grid item lg={4}>
+                          <ImgMediaCard state={state} card={dish} />
+                        </Grid>
+                      );
+                    })}
+                  </Grid>
+                  <br></br>
+                </div>
+              );
+            })}
+          </Container>
           <br></br>
-          {console.log(_menu)}
-          {Object.keys(_menu).map((key, index) => {
-            return (
-              <div>
-                <h1>{key}</h1>
-                <Grid container maxWidth="lg" spacing={3}>
-                  {_menu[key].map((dish) => {
-                    return (
-                      <Grid item lg={4}>
-                        <ImgMediaCard state={state} card={dish} />
-                      </Grid>
-                    );
-                  })}
-                </Grid>
-                <br></br>
-              </div>
-            );
-          })}
-        </Container>
-        <br></br>
-        <br></br>
-      </Paper>
+          <br></br>
+        </Paper>
       </Container>
-
     </div>
   );
 };

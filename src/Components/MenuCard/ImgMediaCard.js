@@ -75,7 +75,10 @@ export default function ImgMediaCard(props) {
         src={card.image}
       />
 
-      <CardContent>
+      <CardContent sx={{
+        // minHeight: 200
+        minHeight:props.state.descriptions.minHeight
+      }}>
         {/* HEADER TEXT*/}
         <Typography
           sx={{
@@ -95,6 +98,10 @@ export default function ImgMediaCard(props) {
           sx={{
             // fontSize: props.state.fontSize,
             // fontFamily: props.state.item_heading.fontFamily,
+            fontSize: props.state.descriptions.fontSize,
+            fontFamily: props.state.descriptions.fontFamily,
+            color: `rgb(${props.state.descriptions.color.r},${props.state.descriptions.color.g},${props.state.descriptions.color.b})`
+
           }}
           variant="body2"
           color="text.secondary"
@@ -111,15 +118,18 @@ export default function ImgMediaCard(props) {
         </Typography>
       </CardContent>
       <Divider></Divider>
-      <CardActions>
+      <CardActions display='flex' sx={{
+        backgroundColor:"aliceblue",
+        justifyContent:'space-around'
+      }}>
         {/* <Button size="small">Share</Button> */}
-        <Button size="small" onClick={handleClickOpen}>
+        {/* <Button size="small" onClick={handleClickOpen}>
           Learn More
-        </Button>
+        </Button> */}
         <Typography variant="body2" color="text.secondary">
-          $ {card.price}
+          PRICE: {card.price}
         </Typography>
-        <Button variant='contained' size="small" onClick={handleClickOpen}>
+        <Button  size="small" onClick={handleClickOpen}>
           Add To Order
         </Button>
         <Dialog

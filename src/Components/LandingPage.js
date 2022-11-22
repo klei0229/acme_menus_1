@@ -107,12 +107,16 @@ const LandingPage = () => {
 
   return (
     <div>
-      <Container ></Container>
-      <h1>Dashboard</h1>
-      <h2>My Menus</h2>
-      <h2>Here are your exisiting menus</h2>
-      <h3>Menu 1</h3>
-      <h3>{menus.length}</h3>
+      <Container maxWidth='xl' >
+      <Typography variant ='h6'>
+        My Menus
+        </Typography>  
+      </Container>
+      {/* <h1>Dashboard</h1> */}
+      {/* <h2>My Menus</h2> */}
+      {/* <h2>Here are your existing menus</h2> */}
+      {/* <h3>Menu 1</h3> */}
+      {/* <h3>{menus.length}</h3> */}
       {/* <h3>{menus[0]}</h3> */}
 
       <Container maxWidth="xl">

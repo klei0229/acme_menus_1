@@ -22,20 +22,21 @@ import {
 const EditTypography = ({type,onChange, state,fonts,name}) => {
   return (
     <div>
-              <Typography variant='h6' id="input-slider" gutterBottom>
-        {name}
-      </Typography>
+              {/* <Typography variant='h6' id="input-slider" gutterBottom>
+        // {name}
+      </Typography> */}
         {/* {type} */}
       <Typography id="input-slider" gutterBottom>
         Font Size
       </Typography>
       <Slider
-        defaultValue={12}
+        defaultValue={state.fontSize}
         aria-label="item_headingFontSize"
         name={`${type}FontSize`}
         // "item_headingFontSize"
         valueLabelDisplay="auto"
         onChange={onChange}
+        max={150}
       />
       {/* <InputLabel id="demo-simple-select-label">Age</InputLabel> */}
       <Typography id="input-slider" gutterBottom>
