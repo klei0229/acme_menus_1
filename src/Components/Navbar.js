@@ -27,14 +27,14 @@ import { logout } from '../store';
 
 const settings = [
   { name: 'Profile', url: '#/profile' },
-  { name: 'Cart', url: '#/cart' },
-  { name: 'Orders', url: '#/orders' },
+  // { name: 'Cart', url: '#/cart' },
+  // { name: 'Orders', url: '#/orders' },
 ];
 
 const pages = [
   { name: 'Home', url: '/' },
-  { name: 'Bundles', url: '#/bundles' },
-  { name: 'Snacks', url: '#/snacks' },
+  { name: 'View Menus', url: '#/menus' },
+  { name: 'Create Menu', url: '#/createMenu' },
 ];
 
 const companyName = 'ACME MENUS';

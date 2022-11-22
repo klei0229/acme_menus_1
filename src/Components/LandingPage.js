@@ -107,8 +107,10 @@ const LandingPage = () => {
 
   return (
     <div>
-      <h1>My Menus</h1>
-      <h2>Here are your exisitng menus</h2>
+      <Container ></Container>
+      <h1>Dashboard</h1>
+      <h2>My Menus</h2>
+      <h2>Here are your exisiting menus</h2>
       <h3>Menu 1</h3>
       <h3>{menus.length}</h3>
       {/* <h3>{menus[0]}</h3> */}

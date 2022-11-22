@@ -6,7 +6,7 @@ import { createMenu } from "../store";
 
 //mui
 import Menu from "./Menu";
-import { Container, Button, Grid, Typography } from "@mui/material";
+import { Container, Button, Grid, Typography, Paper } from "@mui/material";
 
 import EditPanel from "./EditPanel";
 
@@ -55,7 +55,7 @@ const CreatingMenu = () => {
   const submitMenu = () => {
     console.log("submitted menu");
     dispatch(createMenu(state));
-    navigate('/')
+    navigate("/");
   };
 
   const adjustState = (ev) => {
@@ -100,24 +100,44 @@ const CreatingMenu = () => {
   return (
     <div>
       <h1>Edit Your Menu</h1>
-      <Grid container spacing={2}>
-        <Grid item lg={2}>
-          <Container maxWidth="lg">
-            <Typography variant="h4">Editor</Typography>
-            <EditPanel
-              onSubmit={submitMenu}
-              onChange={adjustState}
-              fetchData={fetchData}
-              state={state}
-            />
-          </Container>
+      <Grid container spacing={3}>
+        <Grid item
+          // backgroundColor="blue"
+          lg={2}
+          sx={{
+          }}
+        >
+          <Paper elevation="10" sx={{
+          pt:2,
+          pb:2
+
+          }}>
+            <Container maxWidth="lg">
+              <Typography variant="h4">Editor</Typography>
+              <EditPanel
+                onSubmit={submitMenu}
+                onChange={adjustState}
+                fetchData={fetchData}
+                state={state}
+              />
+            </Container>
+          </Paper>
         </Grid>
-        <Grid item>
+
+        <Grid item 
+        // backgroundColor="purple" 
+        lg={10}>
           {/* Preview Tab */}
-          <Typography variant="h4">Preview</Typography>
+          <Paper elevation="10" sx={{
+          pt:2,
+          pb:2
+
+          }}>
           <Container maxWidth="lg">
+          {/* <Typography variant="h4">Preview</Typography> */}
             <Menu state={state}></Menu>
           </Container>
+        </Paper>
         </Grid>
       </Grid>
     </div>

@@ -15,7 +15,6 @@ import ImgMediaCard from "./MenuCard/ImgMediaCard";
 import Resturants from "./Restaurants";
 
 const Menu = ({ state }) => {
-
   console.log(state);
   const { menu } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -56,11 +55,14 @@ const Menu = ({ state }) => {
 
   return (
     <div>
+      <Container sx={{backgroundColor:'white'}} maxWidth='lg'>
       <Paper
         elevation="5"
         sx={{
-          minWidth: "1800px",
+          // minWidth: "1800px",
           // backgroundColor:'red'
+          minWidth: "100%",
+          // maxWidth: "75%vw"
         }}
       >
         <Container
@@ -70,7 +72,7 @@ const Menu = ({ state }) => {
             }
           }
           align="center"
-          maxWidth="xl"
+          maxWidth="lg"
         >
           {/* <h1>Menu</h1> */}
           <br></br>
@@ -104,6 +106,8 @@ const Menu = ({ state }) => {
         <br></br>
         <br></br>
       </Paper>
+      </Container>
+
     </div>
   );
 };
