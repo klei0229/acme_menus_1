@@ -4,7 +4,7 @@ const menu = (state = {}, action) => {
   if (action.type === "SET_MENU") {
     // console.log("here");
     // console.log(action.menu);
-    return action.menus;
+    return action.menu;
   }
 
   return state;

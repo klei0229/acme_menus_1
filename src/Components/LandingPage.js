@@ -5,7 +5,7 @@ import { fetchRestaurants, setMenu, fetchMenus } from "../store";
 // import { logout } from '../store';
 
 import Papa from "papaparse";
-
+import MenuCard from "./MenuCard/MenuCard";
 //mui
 import {
   Container,
@@ -21,6 +21,7 @@ import {
   Typography,
   InputLabel,
   Divider,
+  Grid,
 } from "@mui/material";
 import { SettingsSystemDaydreamTwoTone } from "@mui/icons-material";
 
@@ -112,16 +113,22 @@ const LandingPage = () => {
       <h3>{menus.length}</h3>
       {/* <h3>{menus[0]}</h3> */}
 
-      {menus.map((menu) => {
-        // {const menuObj = JSON.parse(menu.data)}
-        return (
-          <div>
-            {/* {console.log(menu.data)} */}
-            {/* {console.log(menu.data['item_heading'])} */}
-            <Typography>{JSON.parse(menu.data).restaurantName}33</Typography>
-          </div>
-        );
-      })}
+      <Container maxWidth="xl">
+        <Grid sx={{ backgroundColor: "green" }} container spacing={1}>
+          {menus.map((menu) => {
+            // {const menuObj = JSON.parse(menu.data)}
+            return (
+              <div>
+                {console.log(menu)}
+                {/* {console.log(menu.data['item_heading'])} */}
+                <Grid item xl={8}>
+                  <MenuCard props={menu}></MenuCard>
+                </Grid>
+              </div>
+            );
+          })}
+        </Grid>
+      </Container>
       <Container maxWidth="lg"></Container>
       <hr></hr>
       {/* <CreateAMenu></CreateAMenu> */}

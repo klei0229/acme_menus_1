@@ -14,6 +14,9 @@ import { Link, Routes, Route } from 'react-router-dom';
 const App = ()=> {
   const { auth } = useSelector(state => state);
   const dispatch = useDispatch();
+
+  const { menu } = useSelector((state) => state);
+
   useEffect(()=> {
     dispatch(loginWithToken());
   }, []);
@@ -39,7 +42,7 @@ const App = ()=> {
           <div> */}
             <Routes>
               <Route path='/' element={<LandingPage></LandingPage>} />
-              <Route path='/menu/:id' element={<Menu/>} />
+              <Route path='/menu/:id' element={<Menu state={menu}></Menu>} />
               <Route path='/creatingMenu' element={<CreatingMenu/>} />
             </Routes>
           </div>

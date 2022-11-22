@@ -15,6 +15,8 @@ import ImgMediaCard from "./MenuCard/ImgMediaCard";
 import Resturants from "./Restaurants";
 
 const Menu = ({ state }) => {
+
+  console.log(state);
   const { menu } = useSelector((state) => state);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -28,28 +30,34 @@ const Menu = ({ state }) => {
   //   console.log(text);
   // }
 
+  // useEffect(()=>{
+  //   console.log(state);
+  //   setMenu(state.menu);
+  // },[])
+
   const [_menu, setMenu] = React.useState({});
 
   useEffect(() => {
     // dispatch(fetchMenu(id));
     // test();
     console.log(state);
+    console.log(state.menu);
     setMenu(state.menu);
-
   }, [state]);
 
-  useEffect(() => {
-    console.log(menu);
+  // useEffect(() => {
+  //   console.log(menu);
 
-    // if(menu.length== 0){
-    //   dispatch(setMenu());
-    // }
-    setMenu(menu);
-  }, [menu]);
+  //   // if(menu.length== 0){
+  //   //   dispatch(setMenu());
+  //   // }
+  //   setMenu(menu);
+  // }, [menu]);
 
   return (
     <div>
-      <Paper elevation='5'
+      <Paper
+        elevation="5"
         sx={{
           minWidth: "1800px",
           // backgroundColor:'red'
@@ -71,23 +79,20 @@ const Menu = ({ state }) => {
           <br></br>
           <br></br>
 
-          <Typography variant='h1'>
-            {state.restaurantName}
-          </Typography>
+          <Typography variant="h1">{state.restaurantName}</Typography>
           <hr></hr>
           <br></br>
+          {console.log(_menu)}
           {Object.keys(_menu).map((key, index) => {
             return (
               <div>
-          
                 <h1>{key}</h1>
                 <Grid container maxWidth="lg" spacing={3}>
                   {_menu[key].map((dish) => {
                     return (
-                      
-                        <Grid item lg={4}>
-                          <ImgMediaCard state={state} card={dish} />
-                        </Grid>
+                      <Grid item lg={4}>
+                        <ImgMediaCard state={state} card={dish} />
+                      </Grid>
                     );
                   })}
                 </Grid>

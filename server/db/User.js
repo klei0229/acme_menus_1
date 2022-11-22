@@ -59,6 +59,7 @@ User.prototype.createMenu = async function (data) {
 
 User.prototype.getMenus = async function () {
   const menus = await Menu.findAll({ where: { userId: this.id } });
+  console.log(menus);
   return menus;
   // return cart;
 };
