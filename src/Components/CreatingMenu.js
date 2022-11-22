@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchRestaurants } from "../store";
+import { useNavigate } from "react-router-dom";
+import { createMenu } from "../store";
 // import { logout } from '../store';
 
 //mui
@@ -11,15 +12,15 @@ import EditPanel from "./EditPanel";
 
 const CreatingMenu = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     // fontSize: 12,
-    // headingFontSize: 15,
-    // headingFontFamily: "arial",
+    // item_headingFontSize: 15,
+    // item_headingFontFamily: "arial",
 
     restaurantName: "Restaurant Name",
     menu: {},
-    heading: {
+    item_heading: {
       fontSize: 12,
       fontFamily: "verdana",
       color: {
@@ -53,6 +54,8 @@ const CreatingMenu = () => {
 
   const submitMenu = () => {
     console.log("submitted menu");
+    dispatch(createMenu(state));
+    navigate('/')
   };
 
   const adjustState = (ev) => {
@@ -61,33 +64,33 @@ const CreatingMenu = () => {
 
     let name = ev.target.name;
 
-    if (name === "headingFontSize") {
+    if (name === "item_headingFontSize") {
       console.log("hereeeee");
       let newState = { ...state };
       console.log(newState);
-      newState.heading.fontSize = ev.target.value;
+      newState.item_heading.fontSize = ev.target.value;
       setState(newState);
-    } else if (name === "headingFontFamily") {
+    } else if (name === "item_headingFontFamily") {
       let newState = { ...state };
-      newState.heading.fontFamily = ev.target.value;
+      newState.item_heading.fontFamily = ev.target.value;
       setState(newState);
-    } else if (name === "headingFontColorR") {
+    } else if (name === "item_headingFontColorR") {
       let newState = { ...state };
-      newState.heading.color.r = ev.target.value;
+      newState.item_heading.color.r = ev.target.value;
       setState(newState);
-    } else if (name === "headingFontColorG") {
+    } else if (name === "item_headingFontColorG") {
       let newState = { ...state };
-      newState.heading.color.g = ev.target.value;
+      newState.item_heading.color.g = ev.target.value;
       setState(newState);
-    } else if (name === "headingFontColorB") {
+    } else if (name === "item_headingFontColorB") {
       let newState = { ...state };
-      newState.heading.color.b = ev.target.value;
+      newState.item_heading.color.b = ev.target.value;
       setState(newState);
-    } else if (name ==="resName"){
-        console.log('here')
-        let newState = { ...state };
-        newState.restaurantName = ev.target.value;
-        setState(newState);
+    } else if (name === "resName") {
+      console.log("here");
+      let newState = { ...state };
+      newState.restaurantName = ev.target.value;
+      setState(newState);
     }
   };
 
@@ -100,7 +103,7 @@ const CreatingMenu = () => {
       <Grid container spacing={2}>
         <Grid item lg={2}>
           <Container maxWidth="lg">
-          <Typography variant='h4'>Editor</Typography>
+            <Typography variant="h4">Editor</Typography>
             <EditPanel
               onSubmit={submitMenu}
               onChange={adjustState}
@@ -111,7 +114,7 @@ const CreatingMenu = () => {
         </Grid>
         <Grid item>
           {/* Preview Tab */}
-          <Typography variant='h4'>Preview</Typography>
+          <Typography variant="h4">Preview</Typography>
           <Container maxWidth="lg">
             <Menu state={state}></Menu>
           </Container>

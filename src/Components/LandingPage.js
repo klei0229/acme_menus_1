@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchRestaurants, setMenu } from "../store";
+import { fetchRestaurants, setMenu, fetchMenus } from "../store";
 // import { logout } from '../store';
 
 import Papa from "papaparse";
@@ -27,11 +27,22 @@ import { SettingsSystemDaydreamTwoTone } from "@mui/icons-material";
 const LandingPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { menus } = useSelector((state) => state);
+
   const [open, setOpen] = React.useState(false);
 
   const [data, setData] = React.useState({});
 
   const [csv, setCSV] = React.useState(null);
+
+  useEffect(() => {
+    dispatch(fetchMenus());
+  }, []);
+
+  useEffect(() => {
+    console.log(menus);
+  }, [menus]);
 
   useEffect(() => {
     if (csv) {
@@ -93,14 +104,24 @@ const LandingPage = () => {
     // return JSONData;
   };
 
-
-
   return (
     <div>
       <h1>My Menus</h1>
       <h2>Here are your exisitng menus</h2>
       <h3>Menu 1</h3>
-      <h3>Menu 2</h3>
+      <h3>{menus.length}</h3>
+      {/* <h3>{menus[0]}</h3> */}
+
+      {menus.map((menu) => {
+        // {const menuObj = JSON.parse(menu.data)}
+        return (
+          <div>
+            {/* {console.log(menu.data)} */}
+            {/* {console.log(menu.data['item_heading'])} */}
+            <Typography>{JSON.parse(menu.data).restaurantName}33</Typography>
+          </div>
+        );
+      })}
       <Container maxWidth="lg"></Container>
       <hr></hr>
       {/* <CreateAMenu></CreateAMenu> */}

@@ -1,7 +1,7 @@
 const conn = require("./conn");
 const User = require("./User");
 // const BusinessAccount = require("./BusinessAccount");
-const Restaurant = require("./Restaurant");
+const Menu = require("./Menu");
 const Dish = require("./Dish");
 // const Product = require("./Product");
 // const Order = require("./Order");
@@ -15,9 +15,9 @@ const { json } = require("sequelize");
 
 
 //Associations:
-Dish.belongsTo(Restaurant);
-Restaurant.hasMany(Dish);
-User.hasMany(Restaurant);
+// Dish.belongsTo(Restaurant);
+// Restaurant.hasMany(Dish);
+User.hasMany(Menu);
 // Restaurant.hasOne(User);
 
 const getImage = (path) => {
@@ -49,17 +49,17 @@ const syncAndSeed = async () => {
   });
 
   //Seed Restaurants
-  const [timhowan,piccoli] = await Promise.all([
-    Restaurant.create({ name: "Tim Ho Wan" }),
-    Restaurant.create({ name: "Picocoli Trattoria" }),
-  ]);
+  // const [timhowan,piccoli] = await Promise.all([
+  //   Restaurant.create({ name: "Tim Ho Wan" }),
+  //   Restaurant.create({ name: "Picocoli Trattoria" }),
+  // ]);
 
-  timhowan.userId = kevin.id;
-  piccoli.userId = kevin.id;
+  // timhowan.userId = kevin.id;
+  // piccoli.userId = kevin.id;
   // taquitos.userId = kevin.id;
 
-  await timhowan.save();
-  await piccoli.save();
+  // await timhowan.save();
+  // await piccoli.save();
   // await taquitos.save();
 
 
@@ -78,7 +78,7 @@ const syncAndSeed = async () => {
 module.exports = {
   syncAndSeed,
   User,
-  Restaurant,
+  Menu,
   Dish,
   // BusinessAccount
 };

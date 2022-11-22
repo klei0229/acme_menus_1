@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const menu = (state = {}, action) => {
-  if (action.type === "SET_MENU") {
+const menus = (state = [], action) => {
+  if (action.type === "SET_MENUS") {
     // console.log("here");
     // console.log(action.menu);
     return action.menus;
@@ -32,18 +32,22 @@ export const setMenu = (data) => {
 };
 
 
-export const createMenu = (data) => {
+export const fetchMenus = () => {
   return async (dispatch) => {
-    console.log("here");
+    // console.log("here");
     const token = window.localStorage.getItem("token");
     if (token) {
-      const response = await axios.post("/api/menu/create", data, {
+      const response = await axios.get("/api/menus", {
         headers: {
           authorization: token,
         },
       });
+
+      console.log(response);
+      dispatch({type:"SET_MENUS", menus: response.data})
     }
   };
 };
 
-export default menu;
+
+export default menus;

@@ -79,9 +79,9 @@ export default function ImgMediaCard(props) {
         {/* HEADER TEXT*/}
         <Typography
           sx={{
-            fontSize: props.state.heading.fontSize,
-            fontFamily: props.state.heading.fontFamily,
-            color: `rgb(${props.state.heading.color.r},${props.state.heading.color.g},${props.state.heading.color.b})`
+            fontSize: props.state.item_heading.fontSize,
+            fontFamily: props.state.item_heading.fontFamily,
+            color: `rgb(${props.state.item_heading.color.r},${props.state.item_heading.color.g},${props.state.item_heading.color.b})`
           }}
           variant="h5"
           component="div"
@@ -93,8 +93,8 @@ export default function ImgMediaCard(props) {
         </Typography>
         <Typography
           sx={{
-            fontSize: props.state.fontSize,
-            fontFamily: props.state.headingFontFamily,
+            // fontSize: props.state.fontSize,
+            // fontFamily: props.state.item_heading.fontFamily,
           }}
           variant="body2"
           color="text.secondary"
@@ -103,7 +103,7 @@ export default function ImgMediaCard(props) {
           {card.description}
         </Typography>
         <Typography
-          sx={{ fontFamily: props.state.headingFontFamily }}
+          // sx={{ fontFamily: props.state.item_heading.FontFamily }}
           variant="body2"
           color="text.secondary"
         >

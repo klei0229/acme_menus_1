@@ -2,6 +2,7 @@ const conn = require("./conn");
 const { STRING, UUID, UUIDV4, TEXT, BOOLEAN, INT } = conn.Sequelize;
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const Menu = require("./Menu");
 const JWT = process.env.JWT;
 
 const User = conn.define("user", {
@@ -51,11 +52,15 @@ User.prototype.getRestaurants = async function () {
   return restaurants;
 };
 
-User.prototype.createOrder = async function () {
-  const cart = await this.getCart();
-  cart.isCart = false;
-  await cart.save();
-  return cart;
+User.prototype.createMenu = async function (data) {
+  const menu = await Menu.create({ data: data, userId: this.id });
+  // return cart;
+};
+
+User.prototype.getMenus = async function () {
+  const menus = await Menu.findAll({ where: { userId: this.id } });
+  return menus;
+  // return cart;
 };
 
 User.prototype.getCart = async function () {
