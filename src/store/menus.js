@@ -10,20 +10,10 @@ const menus = (state = [], action) => {
   return state;
 };
 
-// export const fetchMenu = (id) => {
-//   return async (dispatch) => {
-//     // const token = window.localStorage.getItem("token");
-//     const response = await axios.get(`/api/restaurants/${id}`);
-//     console.log('here');
-//     console.log(response.data.dishes);
-//     dispatch({ type: "SET_MENU", menu: response.data.dishes });
-//   };
-//   //   { type: "SET_RESTUARANTS", restaurants: [] };
-// };
+
 
 export const setMenu = (data) => {
   return async (dispatch) => {
-    console.log(data);
     // const token = window.localStorage.getItem("token");
     // const response = await axios.get(`/api/restaurants/${id}`);
     dispatch({ type: "SET_MENU", menu: data });
@@ -43,7 +33,7 @@ export const fetchMenus = () => {
         },
       });
 
-      console.log(response);
+      // console.log(response);
       dispatch({type:"SET_MENUS", menus: response.data})
     }
   };

@@ -108,30 +108,23 @@ const CreatingMenu = () => {
   });
 
   const fetchData = (data) => {
-    console.log("fetch data");
-    console.log(data);
     let newState = { ...state };
     newState.menu = data;
     setState(newState);
-    console.log(state);
   };
 
   const submitMenu = () => {
-    console.log("submitted menu");
     dispatch(createMenu(state));
     navigate("/");
   };
 
   const adjustState = (ev) => {
-    console.log(ev.target.value);
-    console.log(ev.target.name);
 
     let name = ev.target.name;
 
     let newState = {...state};
 
     if (name === "item_headingFontSize") {
-      console.log(newState);
       newState.item_heading.fontSize = ev.target.value;
     } else if (name === "item_headingFontFamily") {
       newState.item_heading.fontFamily = ev.target.value;
@@ -180,14 +173,12 @@ const CreatingMenu = () => {
     } else if (name === "descriptionsFontColorB") {
       newState.descriptions.color.b = ev.target.value;
     } else if (name === "descriptionsMinHeight") {
-      console.log(1);
     newState.descriptions.minHeight = ev.target.value;
   } 
     setState(newState);
     }
 
   useEffect(() => {
-    console.log(state);
   }, [state]);
   return (
     <div>

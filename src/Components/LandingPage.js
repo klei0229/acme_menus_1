@@ -42,22 +42,18 @@ const LandingPage = () => {
   }, []);
 
   useEffect(() => {
-    console.log(menus);
   }, [menus]);
 
   useEffect(() => {
     if (csv) {
       csv.addEventListener("change", (ev) => {
         const file = ev.target.files[0];
-        console.log(file);
         Papa.parse(file, {
           complete: function (results) {
-            console.log(results);
             setData(results);
           },
         });
 
-        console.log(data);
       });
     }
   }, [csv]);
@@ -73,10 +69,8 @@ const LandingPage = () => {
   const getJSON = (data) => {
     data.data.pop();
     const arr = {};
-    console.log(data);
 
     data.data.map((item) => {
-      console.log(item);
 
       const obj = {
         name: item[0],
@@ -93,7 +87,6 @@ const LandingPage = () => {
       arr[item[4]].push(obj);
     });
     // arr.pop();
-    console.log(arr);
     return arr;
   };
 
@@ -108,7 +101,7 @@ const LandingPage = () => {
   return (
     <div>
       <Container maxWidth='xl' >
-      <Typography variant ='h6'>
+      <Typography variant ='h4'>
         My Menus
         </Typography>  
       </Container>
@@ -120,17 +113,16 @@ const LandingPage = () => {
       {/* <h3>{menus[0]}</h3> */}
 
       <Container maxWidth="xl">
-        <Grid sx={{ backgroundColor: "green" }} container spacing={1}>
+        <Grid container spacing={3}>
           {menus.map((menu) => {
             // {const menuObj = JSON.parse(menu.data)}
             return (
-              <div>
-                {console.log(menu)}
-                {/* {console.log(menu.data['item_heading'])} */}
-                <Grid item xl={8}>
+
+                <Grid  item xl={2}>
+                  {/* here */}
                   <MenuCard props={menu}></MenuCard>
                 </Grid>
-              </div>
+              
             );
           })}
         </Grid>

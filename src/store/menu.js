@@ -23,7 +23,6 @@ const menu = (state = {}, action) => {
 
 export const setMenu = (data) => {
   return async (dispatch) => {
-    console.log(data);
     // const token = window.localStorage.getItem("token");
     // const response = await axios.get(`/api/restaurants/${id}`);
     dispatch({ type: "SET_MENU", menu: data });
@@ -34,7 +33,6 @@ export const setMenu = (data) => {
 
 export const createMenu = (data) => {
   return async (dispatch) => {
-    console.log("here");
     const token = window.localStorage.getItem("token");
     if (token) {
       const response = await axios.post("/api/menu/create", data, {

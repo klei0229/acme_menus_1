@@ -18,20 +18,3 @@ app.get("/", isLoggedIn, async (req, res, next) => {
   }
 });
 
-// app.get("/:id", async (req, res, next) => {
-//   try {
-//     // console.log('id is'+req.params.id);
-//     const menu = await Restaurant.findByPk(req.params.id,{
-//       include:{
-//         model: Dish
-//       }
-//     });
-
-//     // console.log(menu);
-//     res.send(menu);
-
-//   } catch (ex) {
-//     next(ex);
-//   }
-// }
-// );

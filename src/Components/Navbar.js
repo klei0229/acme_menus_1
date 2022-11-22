@@ -123,13 +123,13 @@ function ResponsiveAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
-          <Box
+          {/* <Box
               sx={{mr:"12"}}
               component="img"
               width="50px"
               height="50px"
-              src="https://cdn-icons-png.flaticon.com/512/2553/2553691.png"
-            ></Box>
+              // src="https://cdn-icons-png.flaticon.com/512/2553/2553691.png"
+            ></Box> */}
           {/* <Icon
             sx={{
               mr: "5",

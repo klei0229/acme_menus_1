@@ -28,12 +28,11 @@ export default function MenuCard(props) {
   const name = JSON.parse(props.props.data).restaurantName;
   // const name2 = menuData.menuData;
   // const { card } = props;
-  console.log(name);
   // console.log(name2);
 
 const handleView = () => {
 
-  console.log(JSON.parse(props.props.data));
+  // console.log(JSON.parse(props.props.data));
   dispatch(setMenu(JSON.parse(props.props.data)));
   navigate(`/menu/${id}`);
 }
@@ -42,17 +41,17 @@ const handleView = () => {
     <div>
       <Card
         sx={{
-          minWidth: "100%",
-          backgroundColor: "blue",
+          // minWidth: "100%",
+          // backgroundColor: "blue",
         }}
       >
         <CardMedia
           component="img"
           // image="/static/images/cards/contemplative-reptile.jpg"
           // maxWidth="100px"
-          // maxHeight="50px"
+          maxHeight="50px"
           object-fit="contain"
-          // src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
         />
 
         <CardContent>

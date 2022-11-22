@@ -27,7 +27,6 @@ const EditPanel = ({ onChange, state, onSubmit, fetchData }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(state);
   }, [state]);
 
   const fonts = [
@@ -45,27 +44,22 @@ const EditPanel = ({ onChange, state, onSubmit, fetchData }) => {
     if (csv) {
       csv.addEventListener("change", (ev) => {
         const file = ev.target.files[0];
-        console.log(file);
         Papa.parse(file, {
           complete: function (results) {
             results.data.pop();
-            console.log(results);
             setData(results);
             // let obj = getJSON(data);
             // fetchData(obj);
           },
         });
 
-        console.log(data);
       });
     }
   }, [csv]);
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       let obj = getJSON(data);
-      console.log(obj);
       fetchData(obj);
     }
   }, [data]);
@@ -73,10 +67,8 @@ const EditPanel = ({ onChange, state, onSubmit, fetchData }) => {
   const getJSON = (data) => {
     // data.data.pop();
     const arr = {};
-    console.log(data.data);
 
     data.data.map((item) => {
-      console.log(item);
 
       const obj = {
         name: item[0],

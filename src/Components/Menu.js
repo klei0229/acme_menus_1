@@ -15,22 +15,18 @@ import ImgMediaCard from "./MenuCard/ImgMediaCard";
 import Resturants from "./Restaurants";
 
 const Menu = ({ state }) => {
-  console.log(state);
   const { menu } = useSelector((state) => state);
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(menu);
   const refs = useRef([]);
   // async function test() {
   //   translate.engine = "deepl";
   //   // translate.key = process.env.DEEPL_KEY;
   //   translate.key = "169e6b4f-2e0a-838f-43ea-5b01f2c75ff7:fx";
   //   const text = await translate("Hello World", "es");
-  //   console.log(text);
   // }
 
   // useEffect(()=>{
-  //   console.log(state);
   //   setMenu(state.menu);
   // },[])
 
@@ -39,13 +35,10 @@ const Menu = ({ state }) => {
   useEffect(() => {
     // dispatch(fetchMenu(id));
     // test();
-    console.log(state);
-    console.log(state.menu);
     setMenu(state.menu);
   }, [state]);
 
   const handleClick = (ev) => {
-    console.log(ev.target.value)
     // ref.current?.scrollIntoView({ behavior: "smooth" });
     refs.current[ev.target.value].scrollIntoView({ behavior: "smooth" });
   }
@@ -120,7 +113,7 @@ const Menu = ({ state }) => {
             </Container>
             <hr></hr>
 
-            {console.log(_menu)}
+            {/* {console.log(_menu)} */}
             {Object.keys(_menu).map((key, index) => {
               return (
                 <div key={index} 
