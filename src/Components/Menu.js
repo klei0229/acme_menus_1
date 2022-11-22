@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { logout, setMenu } from "../store";
@@ -20,7 +20,7 @@ const Menu = ({ state }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   console.log(menu);
-
+  const refs = useRef([]);
   // async function test() {
   //   translate.engine = "deepl";
   //   // translate.key = process.env.DEEPL_KEY;
@@ -44,6 +44,11 @@ const Menu = ({ state }) => {
     setMenu(state.menu);
   }, [state]);
 
+  const handleClick = (ev) => {
+    console.log(ev.target.value)
+    // ref.current?.scrollIntoView({ behavior: "smooth" });
+    refs.current[ev.target.value].scrollIntoView({ behavior: "smooth" });
+  }
   // useEffect(() => {
   //   console.log(menu);
 
@@ -97,20 +102,41 @@ const Menu = ({ state }) => {
               {state.restaurantName}
             </Typography>
             <hr></hr>
-            <br></br>
+            {/* <br></br> */}
 
             {/* //navbar */}
-            
+            <Container
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              {Object.keys(_menu).map((key, index) => {
+                return (
+                  <Button value={index} onClick={handleClick}>{key}</Button>
+                );
+              })}
+            </Container>
+            <hr></hr>
+
             {console.log(_menu)}
             {Object.keys(_menu).map((key, index) => {
               return (
-                <div>
+                <div key={index} 
+                ref={(element)=>{
+                  refs.current[index] = element
+                }}>
                   {/* <h1>{key}</h1> */}
-                  <Typography sx={{
-                    fontSize:state.categories.fontSize,
-                    fontFamily:state.categories.fontFamily,
-                    color: `rgb(${state.categories.color.r},${state.categories.color.g},${state.categories.color.b})`,
-                  }} variant="h4" gutterBottom>
+                  <Typography
+                    sx={{
+                      fontSize: state.categories.fontSize,
+                      fontFamily: state.categories.fontFamily,
+                      color: `rgb(${state.categories.color.r},${state.categories.color.g},${state.categories.color.b})`,
+                    }}
+                    variant="h4"
+                    gutterBottom
+                  >
                     {key}
                   </Typography>
                   <Grid container maxWidth="lg" spacing={3}>

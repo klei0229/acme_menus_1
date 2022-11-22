@@ -7,14 +7,10 @@ module.exports = app;
 app.post("/create", isLoggedIn, async (req, res, next) => {
   // console.log("within api2");
   try {
-    console.log("within api");
 
     const user = req.user;
-    console.log(user.id);
-    console.log(req.body);
 
     const string = JSON.stringify(req.body);
-    console.log(string);
     await user.createMenu(string);
   } catch (ex) {
     next(ex);

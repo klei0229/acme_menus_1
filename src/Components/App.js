@@ -44,6 +44,7 @@ const App = ()=> {
               <Route path='/' element={<LandingPage></LandingPage>} />
               <Route path='/menu/:id' element={<Menu state={menu}></Menu>} />
               <Route path='/creatingMenu' element={<CreatingMenu/>} />
+              {/* <Route path={`/#${}`} element={<CreatingMenu/>} /> */}
             </Routes>
           </div>
         )
