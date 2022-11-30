@@ -18,7 +18,8 @@ const CreatingMenu = () => {
     // item_headingFontSize: 15,
     // item_headingFontFamily: "arial",
 
-    restaurantName: "Restaurant Name",
+    imageURL: "https://i.etsystatic.com/11979725/r/il/425b9a/1431687786/il_fullxfull.1431687786_w5a8.jpg",
+    restaurantName: "My Restaurant",
     menu: {},
     item_heading: {
       fontSize: 18,
@@ -175,6 +176,9 @@ const CreatingMenu = () => {
     } else if (name === "descriptionsMinHeight") {
     newState.descriptions.minHeight = ev.target.value;
   } 
+  else if (name === "imageurlname") {
+    newState.imageURL = ev.target.value;
+  }
     setState(newState);
     }
 

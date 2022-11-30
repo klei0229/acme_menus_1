@@ -5,7 +5,7 @@ import { logout, setMenu } from "../store";
 
 import translate from "translate";
 
-import { Container, Button, Grid, Paper, Typography } from "@mui/material";
+import { Container, Button, Grid, Paper, Typography, Box } from "@mui/material";
 import ImgMediaCard from "./MenuCard/ImgMediaCard";
 
 // const { text } = await translate('Привет, мир! Как дела?', { to: 'en' });
@@ -13,6 +13,7 @@ import ImgMediaCard from "./MenuCard/ImgMediaCard";
 // console.log(text) // => 'Hello World! How are you?'
 
 import Resturants from "./Restaurants";
+import { GifBoxRounded } from "@mui/icons-material";
 
 const Menu = ({ state }) => {
   const { menu } = useSelector((state) => state);
@@ -41,7 +42,7 @@ const Menu = ({ state }) => {
   const handleClick = (ev) => {
     // ref.current?.scrollIntoView({ behavior: "smooth" });
     refs.current[ev.target.value].scrollIntoView({ behavior: "smooth" });
-  }
+  };
   // useEffect(() => {
   //   console.log(menu);
 
@@ -83,7 +84,16 @@ const Menu = ({ state }) => {
             <br></br>
             <br></br>
             <br></br>
+            {/* <CardMedia
+              component="img"
+              // image="/static/images/cards/contemplative-reptile.jpg"
 
+              width="200px"
+              height="200px"
+              object-fit="contain"
+              // src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+              src={state.imageUrl}
+            /> */}
             <Typography
               variant="h1"
               sx={{
@@ -107,7 +117,9 @@ const Menu = ({ state }) => {
             >
               {Object.keys(_menu).map((key, index) => {
                 return (
-                  <Button value={index} onClick={handleClick}>{key}</Button>
+                  <Button value={index} onClick={handleClick}>
+                    {key}
+                  </Button>
                 );
               })}
             </Container>
@@ -116,10 +128,12 @@ const Menu = ({ state }) => {
             {/* {console.log(_menu)} */}
             {Object.keys(_menu).map((key, index) => {
               return (
-                <div key={index} 
-                ref={(element)=>{
-                  refs.current[index] = element
-                }}>
+                <div
+                  key={index}
+                  ref={(element) => {
+                    refs.current[index] = element;
+                  }}
+                >
                   {/* <h1>{key}</h1> */}
                   <Typography
                     sx={{

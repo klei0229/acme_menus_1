@@ -26,8 +26,7 @@ import {
 const EditPanel = ({ onChange, state, onSubmit, fetchData }) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-  }, [state]);
+  useEffect(() => {}, [state]);
 
   const fonts = [
     { name: "Arial", value: "arial" },
@@ -52,7 +51,6 @@ const EditPanel = ({ onChange, state, onSubmit, fetchData }) => {
             // fetchData(obj);
           },
         });
-
       });
     }
   }, [csv]);
@@ -69,7 +67,6 @@ const EditPanel = ({ onChange, state, onSubmit, fetchData }) => {
     const arr = {};
 
     data.data.map((item) => {
-
       const obj = {
         name: item[0],
         image: item[1],
@@ -92,7 +89,7 @@ const EditPanel = ({ onChange, state, onSubmit, fetchData }) => {
   return (
     <div>
       {/* <h1>Editing Tab</h1> */}
-      
+
       <TextField
         autoFocus
         margin="dense"
@@ -100,6 +97,18 @@ const EditPanel = ({ onChange, state, onSubmit, fetchData }) => {
         name="resName"
         label="Restaurant Name"
         type="resname"
+        fullWidth
+        variant="standard"
+        onChange={onChange}
+      />
+
+      <TextField
+        autoFocus
+        margin="dense"
+        id="imageurlname"
+        name="imageurlname"
+        label="Image Url"
+        type="imageurlname"
         fullWidth
         variant="standard"
         onChange={onChange}

@@ -22,10 +22,12 @@ import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
 
 export default function MenuCard(props) {
+  console.log(props);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const id = props.props.id;
   const name = JSON.parse(props.props.data).restaurantName;
+  const imageUrl = JSON.parse(props.props.data).imageURL;
   // const name2 = menuData.menuData;
   // const { card } = props;
   // console.log(name2);
@@ -48,10 +50,12 @@ const handleView = () => {
         <CardMedia
           component="img"
           // image="/static/images/cards/contemplative-reptile.jpg"
-          // maxWidth="100px"
-          maxHeight="50px"
+          
+          width="200px"
+          height="200px"
           object-fit="contain"
-          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+          // src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+          src={imageUrl}
         />
 
         <CardContent>
