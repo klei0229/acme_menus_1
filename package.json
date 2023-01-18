@@ -10,8 +10,8 @@
     "test:dev": "DATABASE_URL=postgres://localhost/acme_test_db npm run test -- --watch",
     "test:dev:quiet": "QUIET=true npm run test:dev",
     "start:dev": "JWT=felix nodemon server/index.js --ignore dist/ --ignore src/ & npm run build:dev",
-    "start:dev:quiet": "DEEPL_KEY=169e6b4f-2e0a-838f-43ea-5b01f2c75ff7:fx QUIET=true JWT=felix nodemon server/index.js --ignore dist/ --ignore src/ & npm run build:dev",
-    "start": "node server/index.js"
+    "start:dev:quiet": "QUIET=true JWT=felix nodemon server/index.js --ignore dist/ --ignore src/ & npm run build:dev",
+    "start": "JWT=felix node server/index.js"
   },
   "keywords": [],
   "author": "",
