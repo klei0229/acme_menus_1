@@ -187,6 +187,13 @@ const CreatingMenu = () => {
   return (
     <div>
       {/* <h1>Edit Your Menu</h1> */}
+      <Typography variant='h4'>Demo Instructions</Typography>
+        <Typography variant='h6'>Step 1: Click "Upload File" and upload this <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSnxWHLx67KmcIliZ7kc41Q0kWx9qEMk676zE687BvQSOS6FtHY2CdbsbD3AymchT-7irceSOMXVaqO/pub?output=csv">Sample Menu CSV</a> into the editor panel.</Typography>
+        <Typography variant='h6'>Step 2: Change the name of your restaurant.</Typography>
+        <Typography variant='h6'>Step 3: Change the appearances of the Restaurant Name Font / Menu Item Font/ Categories Font / Descriptions via the Editor Panel.</Typography>
+        <Typography variant='h6'>Step 4: Click "Create Menu" to finish menu creation.</Typography>
+
+<br></br>
       <Grid container spacing={3}>
         <Grid item
           // backgroundColor="blue"

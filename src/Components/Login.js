@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 const Login = ()=> {
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({
-    username: '',
-    password: ''
+    username: 'kevin',
+    password: '123'
   });
 
   const onChange = ev => {
