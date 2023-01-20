@@ -32,12 +32,9 @@ const settings = [
 ];
 
 const pages = [
-  { name: 'Home', url: '/' },
-  { name: 'View Menus', url: '#/menus' },
-  { name: 'Create Menu', url: '#/createMenu' },
 ];
 
-const companyName = 'ACME MENUS';
+const companyName = 'Quick Menu Builder';
 
 function ResponsiveAppBar() {
   const dispatch = useDispatch();

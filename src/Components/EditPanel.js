@@ -6,6 +6,7 @@ import InputSlider from "./InputSlider";
 import Papa from "papaparse";
 import EditTypography from "./EditTypography";
 
+
 //mui
 import Menu from "./Menu";
 import {
@@ -36,6 +37,7 @@ const EditPanel = ({ onChange, state, onSubmit, fetchData }) => {
     { name: "Courier New", value: "courier new" },
   ];
 
+  const [csvName, setCsvName] = useState('');
   const [csv, setCSV] = React.useState(null);
   const [data, setData] = React.useState(null);
 
@@ -102,7 +104,7 @@ const EditPanel = ({ onChange, state, onSubmit, fetchData }) => {
         onChange={onChange}
       />
 
-      <TextField
+      {/* <TextField
         autoFocus
         margin="dense"
         id="imageurlname"
@@ -112,7 +114,9 @@ const EditPanel = ({ onChange, state, onSubmit, fetchData }) => {
         fullWidth
         variant="standard"
         onChange={onChange}
-      />
+      /> */}
+
+      <Typography>File Name: {csvName}</Typography>
 
       <Button variant="contained" component="label">
         Upload File
@@ -120,7 +124,12 @@ const EditPanel = ({ onChange, state, onSubmit, fetchData }) => {
           type="file"
           hidden
           ref={(x) => {
+            console.log(x);
             setCSV(x);
+          }}
+          onChange={(ev) => {
+            setCsvName(ev.target.files[0].name);
+            // console.log(ev.target.files[0].name)
           }}
         />
       </Button>

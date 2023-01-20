@@ -41,8 +41,7 @@ const LandingPage = () => {
     dispatch(fetchMenus());
   }, []);
 
-  useEffect(() => {
-  }, [menus]);
+  useEffect(() => {}, [menus]);
 
   useEffect(() => {
     if (csv) {
@@ -53,7 +52,6 @@ const LandingPage = () => {
             setData(results);
           },
         });
-
       });
     }
   }, [csv]);
@@ -71,7 +69,6 @@ const LandingPage = () => {
     const arr = {};
 
     data.data.map((item) => {
-
       const obj = {
         name: item[0],
         image: item[1],
@@ -100,43 +97,37 @@ const LandingPage = () => {
 
   return (
     <div>
-      <Container maxWidth='xl' >
-      <Typography variant ='h4'>
-        My Menus
-        </Typography>  
+      <Container maxWidth="xl">
+        <Typography variant='h4'>Demo Instructions</Typography>
+        <Typography variant='h6'>Quick Menu Builder is a small application that aims to help local restaurants render a digital form of their menu by converting their menu's data in CSV file form.</Typography>
+        <Typography variant='h6'>To demo the application, start by pressing the "Create New Menu" or "View" to see exisitng menus on the account.</Typography>
+
+        <hr></hr>
+        <Typography variant="h4">My Menus</Typography>
+
+        <Button onClick={handleSubmit}>Create New Menu</Button>
+
       </Container>
-      {/* <h1>Dashboard</h1> */}
-      {/* <h2>My Menus</h2> */}
-      {/* <h2>Here are your existing menus</h2> */}
-      {/* <h3>Menu 1</h3> */}
-      {/* <h3>{menus.length}</h3> */}
-      {/* <h3>{menus[0]}</h3> */}
 
       <Container maxWidth="xl">
         <Grid container spacing={3}>
           {menus.map((menu) => {
             // {const menuObj = JSON.parse(menu.data)}
             return (
-
-                <Grid  item xl={2}>
-                  {/* here */}
-                  <MenuCard props={menu}></MenuCard>
-                </Grid>
-              
+              <Grid item xl={2}>
+                <MenuCard props={menu}></MenuCard>
+              </Grid>
             );
           })}
         </Grid>
       </Container>
       <Container maxWidth="lg"></Container>
-      <hr></hr>
       {/* <CreateAMenu></CreateAMenu> */}
       <Container maxWidth="lg"></Container>
-      <Button onClick={handleSubmit}>Create New Menu</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Create A New Menu</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To create a new menu, please enter the following information.
           </DialogContentText>
 
           <TextField

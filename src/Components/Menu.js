@@ -8,6 +8,9 @@ import translate from "translate";
 import { Container, Button, Grid, Paper, Typography, Box } from "@mui/material";
 import ImgMediaCard from "./MenuCard/ImgMediaCard";
 
+import * as ReactDOMServer from 'react-dom/server';
+
+
 // const { text } = await translate('Привет, мир! Как дела?', { to: 'en' });
 
 // console.log(text) // => 'Hello World! How are you?'
@@ -20,6 +23,9 @@ const Menu = ({ state }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const refs = useRef([]);
+
+  let ReactDOMServer = require('react-dom/server');
+
   // async function test() {
   //   translate.engine = "deepl";
   //   // translate.key = process.env.DEEPL_KEY;
@@ -32,6 +38,12 @@ const Menu = ({ state }) => {
   // },[])
 
   const [_menu, setMenu] = React.useState({});
+
+  useEffect(()=>{
+    // let string = ReactDOMServer.renderToString(<Menu state={menu}></Menu>);
+    // console.log(string);
+  },[])
+
 
   useEffect(() => {
     // dispatch(fetchMenu(id));
